@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Mind Gbb</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#061120;
+      --bg-soft:#0b1b31;
+      --card:#0f2440;
+      --primary:#2f80ff;
+      --primary-light:#63a3ff;
+      --text:#ffffff;
+      --muted:#9db3cc;
+      --line:rgba(255,255,255,0.08);
+      --success:#5ad1a4;
+      --shadow:0 20px 60px rgba(0,0,0,0.35);
+      --radius:24px;
+      --transition:all .4s ease;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      max-width:100%;
+    }
+
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
+
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:1000;
+      backdrop-filter:blur(16px);
+      background:rgba(6,17,32,0.75);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 0;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-family:'Syne',sans-serif;
+      font-size:1.2rem;
+      font-weight:800;
+      letter-spacing:-0.5px;
+    }
+
+    .logo-icon{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--primary),#7eb4ff);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .logo-icon::before{
+      content:'';
+      position:absolute;
+      width:18px;
+      height:18px;
+      border-radius:6px;
+      border:2px solid rgba(255,255,255,0.7);
+      transform:rotate(45deg);
+    }
+
+    nav{
+      display:flex;
+      gap:34px;
+      align-items:center;
+    }
+
+    nav a{
+      color:var(--muted);
+      font-size:0.95rem;
+      transition:var(--transition);
+    }
+
+    nav a:hover{
+      color:#fff;
+    }
+
+    .nav-btn{
+      padding:13px 22px;
+      border-radius:999px;
+      background:var(--primary);
+      color:#fff;
+      font-weight:700;
+      transition:var(--transition);
+      box-shadow:0 10px 30px rgba(47,128,255,0.25);
+    }
+
+    .nav-btn:hover{
+      transform:translateY(-2px);
+      background:#4a91ff;
+    }
+
+    .hero{
+      position:relative;
+      padding:180px 0 120px;
+      overflow:hidden;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 18px;
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:999px;
+      background:rgba(255,255,255,0.03);
+      color:var(--primary-light);
+      font-size:0.9rem;
+      margin-bottom:28px;
+    }
+
+    .eyebrow span{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--success);
+      box-shadow:0 0 14px var(--success);
+    }
+
+    h1{
+      font-family:'Syne',sans-serif;
+      font-size:clamp(3rem,6vw,6rem);
+      line-height:0.95;
+      letter-spacing:-3px;
+      margin-bottom:28px;
+    }
+
+    .hero p{
+      color:var(--muted);
+      font-size:1.1rem;
+      max-width:640px;
+      margin-bottom:36px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn{
+      padding:16px 26px;
+      border-radius:999px;
+      font-weight:700;
+      transition:var(--transition);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .primary-btn{
+      background:var(--primary);
+      color:#fff;
+      box-shadow:0 15px 40px rgba(47,128,255,0.25);
+    }
+
+    .primary-btn:hover{
+      transform:translateY(-3px);
+      background:#4a91ff;
+    }
+
+    .secondary-btn{
+      border:1px solid rgba(255,255,255,0.1);
+      color:#fff;
+      background:rgba(255,255,255,0.03);
+    }
+
+    .secondary-btn:hover{
+      background:rgba(255,255,255,0.08);
+    }
+
+    .hero-visual{
+      position:relative;
+      min-height:560px;
+    }
+
+    .floating-card{
+      position:absolute;
+      background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.08);
+      backdrop-filter:blur(20px);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .main-ui{
+      width:100%;
+      height:100%;
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .main-ui::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+      radial-gradient(circle at top left,rgba(47,128,255,0.18),transparent 35%),
+      radial-gradient(circle at bottom right,rgba(99,163,255,0.16),transparent 35%);
+    }
+
+    .dashboard{
+      position:relative;
+      z-index:2;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      gap:22px;
+    }
+
+    .ui-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .ui-top div{
+      width:54px;
+      height:10px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.08);
+    }
+
+    .ui-top div:nth-child(2){
+      width:90px;
+    }
+
+    .chart{
+      flex:1;
+      border-radius:22px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.05);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .chart::before{
+      content:'';
+      position:absolute;
+      left:10%;
+      right:10%;
+      bottom:18%;
+      height:2px;
+      background:linear-gradient(90deg,transparent,var(--primary),transparent);
+      transform:rotate(-8deg);
+      box-shadow:0 0 20px rgba(47,128,255,0.7);
+    }
+
+    .chart::after{
+      content:'';
+      position:absolute;
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      background:rgba(47,128,255,0.14);
+      top:20px;
+      right:20px;
+      filter:blur(10px);
+    }
+
+    .stats-row{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .mini-stat{
+      padding:18px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .mini-stat h3{
+      font-size:1.5rem;
+      margin-bottom:4px;
+    }
+
+    .mini-stat p{
+      margin:0;
+      font-size:0.9rem;
+    }
+
+    .card-1{
+      width:480px;
+      height:520px;
+      right:0;
+      top:0;
+    }
+
+    .card-2{
+      width:200px;
+      height:120px;
+      left:-40px;
+      top:90px;
+      padding:22px;
+    }
+
+    .card-3{
+      width:220px;
+      height:140px;
+      right:-40px;
+      bottom:40px;
+      padding:24px;
+    }
+
+    .floating-title{
+      font-size:0.85rem;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+
+    .floating-number{
+      font-size:2rem;
+      font-weight:800;
+      font-family:'Syne',sans-serif;
+    }
+
+    .blur-orb{
+      position:absolute;
+      width:500px;
+      height:500px;
+      border-radius:50%;
+      background:rgba(47,128,255,0.18);
+      filter:blur(80px);
+      top:-180px;
+      right:-100px;
+      z-index:-1;
+    }
+
+    section{
+      padding:110px 0;
+      position:relative;
+    }
+
+    .section-tag{
+      color:var(--primary-light);
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:0.78rem;
+      margin-bottom:18px;
+      font-weight:700;
+    }
+
+    .section-title{
+      font-family:'Syne',sans-serif;
+      font-size:clamp(2.2rem,4vw,4rem);
+      line-height:1;
+      letter-spacing:-2px;
+      margin-bottom:22px;
+    }
+
+    .section-text{
+      color:var(--muted);
+      max-width:760px;
+      font-size:1.05rem;
+    }
+
+    .services-grid{
+      margin-top:60px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
+    }
+
+    .service-card{
+      background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.07);
+      border-radius:28px;
+      padding:36px;
+      transition:var(--transition);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .service-card::before{
+      content:'';
+      position:absolute;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:rgba(47,128,255,0.08);
+      top:-80px;
+      right:-80px;
+    }
+
+    .service-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(99,163,255,0.35);
+    }
+
+    .icon-box{
+      width:64px;
+      height:64px;
+      border-radius:18px;
+      background:rgba(47,128,255,0.14);
+      border:1px solid rgba(99,163,255,0.25);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:26px;
+      position:relative;
+      z-index:2;
+    }
+
+    .icon-box::before{
+      content:'';
+      width:28px;
+      height:28px;
+      border:2px solid #fff;
+      border-radius:10px;
+    }
+
+    .service-card h3{
+      font-size:1.5rem;
+      margin-bottom:14px;
+      position:relative;
+      z-index:2;
+    }
+
+    .service-card p{
+      color:var(--muted);
+      position:relative;
+      z-index:2;
+    }
+
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .about-visual{
+      position:relative;
+      min-height:520px;
+    }
+
+    .about-box{
+      position:absolute;
+      inset:0;
+      border-radius:32px;
+      background:linear-gradient(180deg,#0e2340,#091727);
+      border:1px solid rgba(255,255,255,0.08);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .about-box::before{
+      content:'';
+      position:absolute;
+      width:380px;
+      height:380px;
+      border-radius:50%;
+      background:rgba(47,128,255,0.12);
+      top:-120px;
+      left:-80px;
+      filter:blur(20px);
+    }
+
+    .network{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .node{
+      position:absolute;
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:var(--primary);
+      box-shadow:0 0 20px rgba(47,128,255,0.8);
+    }
+
+    .node::before{
+      content:'';
+      position:absolute;
+      width:180px;
+      height:2px;
+      background:rgba(255,255,255,0.08);
+      top:8px;
+      left:18px;
+      transform-origin:left;
+    }
+
+    .node:nth-child(1){top:25%;left:20%;}
+    .node:nth-child(2){top:40%;right:18%;}
+    .node:nth-child(3){bottom:24%;left:28%;}
+    .node:nth-child(4){bottom:18%;right:22%;}
+
+    .about-content ul{
+      list-style:none;
+      margin-top:36px;
+      display:grid;
+      gap:18px;
+    }
+
+    .about-content li{
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+      color:var(--muted);
+    }
+
+    .check{
+      width:26px;
+      height:26px;
+      border-radius:50%;
+      background:rgba(90,209,164,0.15);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:2px;
+      flex-shrink:0;
+    }
+
+    .check::before{
+      content:'';
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--success);
+    }
+
+    .values-grid{
+      margin-top:60px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .value-card{
+      padding:34px;
+      border-radius:26px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.06);
+      transition:var(--transition);
+    }
+
+    .value-card:hover{
+      transform:translateY(-6px);
+      background:rgba(255,255,255,0.05);
+    }
+
+    .value-card h3{
+      font-size:1.35rem;
+      margin:18px 0 14px;
+    }
+
+    .value-card p{
+      color:var(--muted);
+    }
+
+    .value-icon{
+      width:62px;
+      height:62px;
+      border-radius:18px;
+      background:rgba(47,128,255,0.12);
+      border:1px solid rgba(99,163,255,0.2);
+      position:relative;
+    }
+
+    .value-icon::before{
+      content:'';
+      position:absolute;
+      inset:18px;
+      border:2px solid #fff;
+      border-radius:8px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+      margin-top:60px;
+    }
+
+    .stat-card{
+      padding:40px;
+      border-radius:28px;
+      background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.07);
+      text-align:center;
+    }
+
+    .stat-card h2{
+      font-size:3rem;
+      font-family:'Syne',sans-serif;
+      margin-bottom:10px;
+      color:#fff;
+    }
+
+    .stat-card p{
+      color:var(--muted);
+    }
+
+    .cta{
+      position:relative;
+    }
+
+    .cta-box{
+      padding:80px 70px;
+      border-radius:36px;
+      background:linear-gradient(135deg,#0d2341,#133967);
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.08);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:40px;
+    }
+
+    .cta-box::before{
+      content:'';
+      position:absolute;
+      width:380px;
+      height:380px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.08);
+      right:-100px;
+      top:-100px;
+    }
+
+    .cta-content{
+      position:relative;
+      z-index:2;
+      max-width:700px;
+    }
+
+    .cta-content h2{
+      font-family:'Syne',sans-serif;
+      font-size:clamp(2.5rem,4vw,4rem);
+      line-height:1;
+      margin-bottom:20px;
+      letter-spacing:-2px;
+    }
+
+    .cta-content p{
+      color:#d5e5ff;
+      max-width:560px;
+    }
+
+    footer{
+      padding:80px 0 40px;
+      border-top:1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.2fr 1fr 1fr;
+      gap:50px;
+      margin-bottom:50px;
+    }
+
+    .footer-brand p{
+      color:var(--muted);
+      margin-top:22px;
+      max-width:420px;
+    }
+
+    .footer-title{
+      font-size:1rem;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .footer-links a,
+    .footer-links p{
+      color:var(--muted);
+      transition:var(--transition);
+      font-size:0.95rem;
+    }
+
+    .footer-links a:hover{
+      color:#fff;
+    }
+
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,0.06);
+      padding-top:26px;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:0.92rem;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(30px);
+      transition:all .8s ease;
+    }
+
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:1024px){
+
+      .hero-grid,
+      .about,
+      .footer-grid,
+      .values-grid,
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .services-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-visual{
+        min-height:600px;
+      }
+
+      .card-1{
+        width:100%;
+      }
+
+      .cta-box{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:60px 40px;
+      }
+
+      nav{
+        display:none;
+      }
+    }
+
+    @media(max-width:768px){
+
+      h1{
+        letter-spacing:-2px;
+      }
+
+      .hero{
+        padding-top:150px;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .card-2,
+      .card-3{
+        display:none;
+      }
+
+      .hero-visual{
+        min-height:460px;
+      }
+
+      .stats-row{
+        grid-template-columns:1fr;
+      }
+
+      .section-title{
+        letter-spacing:-1px;
+      }
+
+      .cta-content h2{
+        letter-spacing:-1px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">
+      <div class="logo-icon"></div>
+      Digital Mind Gbb
+    </div>
+
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#values">Values</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-btn">Start a Project</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="blur-orb"></div>
+
+  <div class="container hero-grid">
+
+    <div class="hero-content reveal">
+      <div class="eyebrow">
+        <span></span>
+        Premium Digital Experiences & Educational Products
+      </div>
+
+      <h1>
+        Technology designed to create stronger human connections.
+      </h1>
+
+      <p>
+        Digital Mind Gbb develops modern applications and premium educational experiences that empower communication, personal growth, and meaningful engagement in a digital-first world.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="primary-btn">
+          Build With Us
+        </a>
+
+        <a href="#services" class="secondary-btn">
+          Explore Services
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+
+      <div class="floating-card card-1">
+        <div class="main-ui">
+          <div class="dashboard">
+
+            <div class="ui-top">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+
+            <div class="chart"></div>
+
+            <div class="stats-row">
+              <div class="mini-stat">
+                <h3>98%</h3>
+                <p>User Satisfaction</p>
+              </div>
+
+              <div class="mini-stat">
+                <h3>24/7</h3>
+                <p>Global Accessibility</p>
+              </div>
+
+              <div class="mini-stat">
+                <h3>Secure</h3>
+                <p>Digital Infrastructure</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="floating-card card-2">
+        <div class="floating-title">Apps Delivered</div>
+        <div class="floating-number">120+</div>
+      </div>
+
+      <div class="floating-card card-3">
+        <div class="floating-title">Global Reach</div>
+        <div class="floating-number">18 Countries</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+
+    <div class="reveal">
+      <div class="section-tag">What We Do</div>
+
+      <h2 class="section-title">
+        Digital products built with clarity, strategy and purpose.
+      </h2>
+
+      <p class="section-text">
+        We combine product thinking, technology and user-centered design to create scalable digital experiences that support education, communication and long-term customer engagement.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="icon-box"></div>
+
+        <h3>App Development</h3>
+
+        <p>
+          Custom mobile and web applications engineered for performance, intuitive usability and scalable digital growth.
+        </p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="icon-box"></div>
+
+        <h3>Educational Platforms</h3>
+
+        <p>
+          Interactive learning ecosystems designed to deliver premium educational experiences and practical digital knowledge.
+        </p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="icon-box"></div>
+
+        <h3>Digital Product Strategy</h3>
+
+        <p>
+          Product architecture focused on engagement, retention and long-term value creation for modern audiences.
+        </p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="icon-box"></div>
+
+        <h3>User Experience Design</h3>
+
+        <p>
+          Elegant interfaces and seamless navigation systems that transform complex interactions into intuitive journeys.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about">
+
+    <div class="about-visual reveal">
+      <div class="about-box">
+        <div class="network">
+          <div class="node"></div>
+          <div class="node"></div>
+          <div class="node"></div>
+          <div class="node"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-content reveal">
+
+      <div class="section-tag">About Digital Mind Gbb</div>
+
+      <h2 class="section-title">
+        Built for modern audiences who value meaningful digital experiences.
+      </h2>
+
+      <p class="section-text">
+        Digital Mind Gbb was created with a simple vision: combine technology and educational innovation to help people improve communication, confidence and personal development through premium digital solutions.
+      </p>
+
+      <ul>
+        <li>
+          <div class="check"></div>
+          <div>
+            Transparent development processes with a strong focus on compliance, security and ethical digital practices.
+          </div>
+        </li>
+
+        <li>
+          <div class="check"></div>
+          <div>
+            User-first product design created to maximize engagement while maintaining clarity and accessibility.
+          </div>
+        </li>
+
+        <li>
+          <div class="check"></div>
+          <div>
+            Scalable infrastructure built for global audiences and long-term platform evolution.
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="values">
+  <div class="container">
+
+    <div class="reveal">
+      <div class="section-tag">Our Values</div>
+
+      <h2 class="section-title">
+        Principles that shape every product we create.
+      </h2>
+
+      <p class="section-text">
+        We believe technology should empower people, create clarity and deliver practical value through responsible innovation.
+      </p>
+    </div>
+
+    <div class="values-grid">
+
+      <div class="value-card reveal">
+        <div class="value-icon"></div>
+
+        <h3>Responsible Innovation</h3>
+
+        <p>
+          Every solution is designed with ethical standards, platform integrity and sustainable digital growth in mind.
+        </p>
+      </div>
+
+      <div class="value-card reveal">
+        <div class="value-icon"></div>
+
+        <h3>Human-Centered Design</h3>
+
+        <p>
+          We build products that prioritize usability, accessibility and real human interaction instead of unnecessary complexity.
+        </p>
+      </div>
+
+      <div class="value-card reveal">
+        <div class="value-icon"></div>
+
+        <h3>Continuous Improvement</h3>
+
+        <p>
+          Our commitment to constant evolution allows us to deliver modern experiences aligned with emerging digital behaviors.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="stats">
+
+      <div class="stat-card reveal">
+        <h2>120+</h2>
+        <p>Digital solutions delivered across multiple industries and platforms.</p>
+      </div>
+
+      <div class="stat-card reveal">
+        <h2>18</h2>
+        <p>Countries reached through scalable educational and digital experiences.</p>
+      </div>
+
+      <div class="stat-card reveal">
+        <h2>98%</h2>
+        <p>User satisfaction driven by intuitive interfaces and premium usability.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+
+    <div class="cta-box reveal">
+
+      <div class="cta-content">
+        <h2>
+          Create digital experiences people genuinely connect with.
+        </h2>
+
+        <p>
+          From modern applications to premium educational platforms, Digital Mind Gbb helps transform ideas into scalable digital products with real impact.
+        </p>
+      </div>
+
+      <a href="#contact" class="primary-btn">
+        Let's Build Together
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon"></div>
+          Digital Mind Gbb
+        </div>
+
+        <p>
+          We develop premium digital solutions and educational content designed to enhance interpersonal communication and personal growth.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-title">Navigation</div>
+
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#values">Values</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Corporate Information</div>
+
+        <div class="footer-links">
+          <p>Digital Mind Gbb de Freitas Servicos</p>
+          <p>CNPJ: 58.129.588/0001-68</p>
+          <p>Rua Vilela, 475 — Brazil</p>
+          <p>digitalmindbr.online</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        © 2026 Digital Mind Gbb. All rights reserved.
+      </div>
+
+      <div>
+        Premium Digital Solutions & Educational Products
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('active');
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  reveals.forEach(reveal => {
+    observer.observe(reveal);
+  });
+</script>
+
+</body>
+</html>
