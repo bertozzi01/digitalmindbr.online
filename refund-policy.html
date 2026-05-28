@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Refund Policy | Digital Mind Gbb</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    :root{
+      --bg:#061120;
+      --card:#0d1c32;
+      --primary:#2f80ff;
+      --text:#ffffff;
+      --muted:#9eb1c9;
+      --line:rgba(255,255,255,0.08);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.7;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:min(980px,92%);
+      margin:auto;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      backdrop-filter:blur(14px);
+      background:rgba(6,17,32,0.85);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 0;
+      gap:20px;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-family:'Syne',sans-serif;
+      font-weight:800;
+      font-size:1.1rem;
+    }
+
+    .logo-icon{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#2f80ff,#6ba7ff);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .logo-icon::before{
+      content:'';
+      position:absolute;
+      inset:11px;
+      border:2px solid rgba(255,255,255,0.85);
+      border-radius:8px;
+      transform:rotate(45deg);
+    }
+
+    .back-btn{
+      padding:12px 20px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      font-weight:600;
+      transition:0.3s ease;
+    }
+
+    .back-btn:hover{
+      background:rgba(255,255,255,0.1);
+    }
+
+    .hero{
+      padding:100px 0 60px;
+      text-align:center;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:10px 18px;
+      border-radius:999px;
+      background:rgba(47,128,255,0.1);
+      border:1px solid rgba(47,128,255,0.2);
+      color:#7fb1ff;
+      font-size:0.85rem;
+      font-weight:700;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      margin-bottom:26px;
+    }
+
+    h1{
+      font-family:'Syne',sans-serif;
+      font-size:clamp(3rem,6vw,5rem);
+      line-height:1;
+      letter-spacing:-2px;
+      margin-bottom:24px;
+    }
+
+    .hero p{
+      color:var(--muted);
+      max-width:760px;
+      margin:auto;
+      font-size:1.05rem;
+    }
+
+    .refund-card{
+      background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));
+      border:1px solid var(--line);
+      border-radius:32px;
+      padding:60px;
+      margin-bottom:80px;
+    }
+
+    .section{
+      margin-bottom:50px;
+    }
+
+    .section:last-child{
+      margin-bottom:0;
+    }
+
+    .section h2{
+      font-family:'Syne',sans-serif;
+      font-size:1.7rem;
+      letter-spacing:-1px;
+      margin-bottom:18px;
+    }
+
+    .section p{
+      color:var(--muted);
+      margin-bottom:16px;
+    }
+
+    .section ul{
+      padding-left:22px;
+      color:var(--muted);
+    }
+
+    .section li{
+      margin-bottom:12px;
+    }
+
+    .highlight{
+      padding:24px;
+      border-radius:22px;
+      background:rgba(47,128,255,0.08);
+      border:1px solid rgba(47,128,255,0.15);
+      margin-top:20px;
+    }
+
+    footer{
+      padding:40px 0 60px;
+      border-top:1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-content{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:0.92rem;
+    }
+
+    @media(max-width:768px){
+
+      .nav{
+        flex-direction:column;
+      }
+
+      .refund-card{
+        padding:36px 26px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+
+    <div class="logo">
+      <div class="logo-icon"></div>
+      Digital Mind Gbb
+    </div>
+
+    <a href="index.html" class="back-btn">
+      Back to Website
+    </a>
+
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+
+    <div class="eyebrow">
+      Refund Information
+    </div>
+
+    <h1>
+      Refund Policy
+    </h1>
+
+    <p>
+      This Refund Policy explains the conditions and procedures related to refunds for digital products, applications and educational services provided by Digital Mind Gbb.
+    </p>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="refund-card">
+
+      <div class="section">
+        <h2>1. Overview</h2>
+
+        <p>
+          Digital Mind Gbb de Freitas Servicos (“Digital Mind Gbb”, “Company”, “we”, “our” or “us”) strives to provide high-quality digital products and educational experiences.
+        </p>
+
+        <p>
+          We understand that certain situations may require a refund request. This policy outlines the terms applicable to eligible purchases.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>2. 7-Day Refund Window</h2>
+
+        <p>
+          Eligible purchases may qualify for a refund request within seven (7) calendar days from the original purchase date.
+        </p>
+
+        <div class="highlight">
+          Refund requests submitted after the 7-day period may not be eligible for approval.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>3. Eligible Products & Services</h2>
+
+        <p>
+          Refund eligibility may apply to:
+        </p>
+
+        <ul>
+          <li>Digital educational products and online learning materials.</li>
+          <li>Subscription-based digital services where applicable.</li>
+          <li>Applications or digital products purchased directly through our platform.</li>
+        </ul>
+
+        <p>
+          Certain promotional offers, custom services or third-party transactions may have separate conditions or limitations.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>4. Non-Refundable Situations</h2>
+
+        <p>
+          Refunds may be denied in situations including, but not limited to:
+        </p>
+
+        <ul>
+          <li>Requests submitted outside the 7-day refund period.</li>
+          <li>Evidence of misuse, abuse or fraudulent activity.</li>
+          <li>Violation of our Terms of Use or platform policies.</li>
+          <li>Chargebacks initiated before contacting our support team.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>5. Refund Process</h2>
+
+        <p>
+          To request a refund, users should contact our support team with relevant purchase information and details regarding the request.
+        </p>
+
+        <p>
+          Approved refunds are typically processed through the original payment method used during checkout.
+        </p>
+
+        <p>
+          Processing times may vary depending on financial institutions, payment processors or regional banking systems.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>6. Subscription Cancellations</h2>
+
+        <p>
+          Users may cancel recurring subscriptions at any time before the next billing cycle to avoid future charges.
+        </p>
+
+        <p>
+          Cancellation of a subscription does not automatically guarantee a refund for previous payments already processed.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>7. Fraud Prevention</h2>
+
+        <p>
+          To maintain platform integrity and security, Digital Mind Gbb reserves the right to review refund requests for abuse, suspicious activity or policy violations.
+        </p>
+
+        <p>
+          Excessive refund requests or fraudulent behavior may result in account restrictions or permanent access limitations.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>8. Policy Updates</h2>
+
+        <p>
+          We reserve the right to modify or update this Refund Policy at any time to reflect operational, legal or regulatory changes.
+        </p>
+
+        <p>
+          Continued use of our services after updates constitutes acceptance of the revised policy.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>9. Contact Information</h2>
+
+        <p>
+          For refund-related inquiries or support requests, please contact:
+        </p>
+
+        <p>
+          <strong>Digital Mind Gbb de Freitas Servicos</strong><br>
+          Rua Vilela, 475 — Brazil<br>
+          Website: digitalmindbr.online
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+
+    <div class="footer-content">
+
+      <div>
+        © 2026 Digital Mind Gbb. All rights reserved.
+      </div>
+
+      <div>
+        Digital Mind Gbb de Freitas Servicos
+      </div>
+
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
